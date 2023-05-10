@@ -4,3 +4,4 @@ sentencepiece
 git+https://github.com/huggingface/transformers.git
 accelerate
 bitsandbytes
+argparse
