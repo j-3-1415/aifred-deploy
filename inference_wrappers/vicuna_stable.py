@@ -71,8 +71,9 @@ def main():
 
     parser.add_argument(
         "--output_file",
-        required=True,
-        help="Path to ouput text file."
+        required=False,
+        help="Path to ouput text file.",
+        default=None
     )
 
     args = parser.parse_args()
