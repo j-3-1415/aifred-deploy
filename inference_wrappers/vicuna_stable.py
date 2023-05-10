@@ -27,13 +27,13 @@ def parse_text(data):
 
 
 def run_inference(
-        input_file,
-        output_file
+        input_txt,
+        output_file=None
 ):
-    tokenizer = LlamaTokenizer.from_pretrained("TheBloke/stable-vicuna-13B-HF")
+    tokenizer = LlamaTokenizer.from_pretrained("TheBloke/wizardLM-7B-HF")
 
     base_model = LlamaForCausalLM.from_pretrained(
-        "TheBloke/stable-vicuna-13B-HF",
+        "TheBloke/wizardLM-7B-HF",
         load_in_8bit=True,
         device_map='auto',
     )
@@ -48,14 +48,14 @@ def run_inference(
         repetition_penalty=1.15
     )
 
-    with open(input_file) as f:
-        input_txt = f.readlines()
-
     raw_output = pipe(get_prompt(input_txt))
     output_txt = parse_text(raw_output)
 
-    with open(output_file, "w") as f:
-        f.write(output_txt)
+    if output_file is not None:
+        with open(output_file, "w") as f:
+            f.write(output_txt)
+    
+    print(output_txt)
     
 
 def main():
