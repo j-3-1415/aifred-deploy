@@ -1,4 +1,3 @@
-import json
 import textwrap
 import torch
 import argparse
@@ -64,9 +63,9 @@ def main():
     )
 
     parser.add_argument(
-        "--input_file",
+        "--input_txt",
         required=True,
-        help="Path to input text file."
+        help="Input text."
     )
 
     parser.add_argument(
